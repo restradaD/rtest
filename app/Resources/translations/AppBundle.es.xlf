@@ -1,0 +1,783 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext" target-language="es">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source><![CDATA[app.dashboard]]></source>
+        <target><![CDATA[Dashboard]]></target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source><![CDATA[app.roles.app]]></source>
+        <target><![CDATA[Usuario del APP]]></target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source><![CDATA[app.profile]]></source>
+        <target><![CDATA[Perfil]]></target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source><![CDATA[app.notifications_setup]]></source>
+        <target><![CDATA[Configurar notificaciones]]></target>
+      </trans-unit>
+      <trans-unit id="5" approved="yes">
+        <source><![CDATA[app.password.change]]></source>
+        <target><![CDATA[Cambiar contraseña]]></target>
+      </trans-unit>
+      <trans-unit id="6" approved="yes">
+        <source><![CDATA[app.logout]]></source>
+        <target><![CDATA[Salir]]></target>
+      </trans-unit>
+      <trans-unit id="7" approved="yes">
+        <source><![CDATA[app.app.dashboard]]></source>
+        <target><![CDATA[Dashboard]]></target>
+      </trans-unit>
+      <trans-unit id="8" approved="yes">
+        <source><![CDATA[app.translate]]></source>
+        <target><![CDATA[Traducir]]></target>
+      </trans-unit>
+      <trans-unit id="9" approved="yes">
+        <source><![CDATA[app.api.docs]]></source>
+        <target><![CDATA[API Docs]]></target>
+      </trans-unit>
+      <trans-unit id="10" approved="yes">
+        <source><![CDATA[app.docs]]></source>
+        <target><![CDATA[Documentación]]></target>
+      </trans-unit>
+      <trans-unit id="11" approved="yes">
+        <source><![CDATA[app.search.message]]></source>
+        <target><![CDATA[Buscar...]]></target>
+      </trans-unit>
+      <trans-unit id="12" approved="yes">
+        <source><![CDATA[app.notifications.see_all]]></source>
+        <target><![CDATA[Ver todas las notificaciones]]></target>
+      </trans-unit>
+      <trans-unit id="13" approved="yes">
+        <source><![CDATA[app.welcome]]></source>
+        <target><![CDATA[Bienvenido]]></target>
+      </trans-unit>
+      <trans-unit id="14" approved="yes">
+        <source><![CDATA[app.copyright]]></source>
+        <target><![CDATA[Copyright]]></target>
+      </trans-unit>
+      <trans-unit id="15" approved="yes">
+        <source><![CDATA[app.notes]]></source>
+        <target><![CDATA[Notas]]></target>
+      </trans-unit>
+      <trans-unit id="16" approved="yes">
+        <source><![CDATA[app.projects]]></source>
+        <target><![CDATA[Proyectos]]></target>
+      </trans-unit>
+      <trans-unit id="17" approved="yes">
+        <source><![CDATA[app.notes.latest]]></source>
+        <target><![CDATA[Últimas notas]]></target>
+      </trans-unit>
+      <trans-unit id="18" approved="yes">
+        <source><![CDATA[app.sidebar.notes.subtitle]]></source>
+        <target><![CDATA[Mostrando las últimas notas]]></target>
+      </trans-unit>
+      <trans-unit id="19" approved="yes">
+        <source><![CDATA[app.projects.latest]]></source>
+        <target><![CDATA[Últimos proyectos]]></target>
+      </trans-unit>
+      <trans-unit id="20" approved="yes">
+        <source><![CDATA[app.sidebar.projects.subtitle]]></source>
+        <target><![CDATA[Mostrando último proyectos]]></target>
+      </trans-unit>
+      <trans-unit id="21" approved="yes">
+        <source><![CDATA[app.settings]]></source>
+        <target><![CDATA[Configuraciones]]></target>
+      </trans-unit>
+      <trans-unit id="22" approved="yes">
+        <source><![CDATA[app.sidebar.settings.subtitle]]></source>
+        <target><![CDATA[En esta ventana puede carmbiar configuraciones personales, estas son almacenadas en su perfil.]]></target>
+      </trans-unit>
+      <trans-unit id="23" approved="yes">
+        <source><![CDATA[app.notifications.show]]></source>
+        <target><![CDATA[Mostrar notificación]]></target>
+      </trans-unit>
+      <trans-unit id="24" approved="yes">
+        <source><![CDATA[app.language.change]]></source>
+        <target><![CDATA[Cambiar idioma]]></target>
+      </trans-unit>
+      <trans-unit id="25" approved="yes">
+        <source><![CDATA[app.processing]]></source>
+        <target><![CDATA[Procesando...]]></target>
+      </trans-unit>
+      <trans-unit id="26" approved="yes">
+        <source><![CDATA[app.notifications.nothing_found]]></source>
+        <target><![CDATA[Ustéd no tiene notificaciones]]></target>
+      </trans-unit>
+      <trans-unit id="27" approved="yes">
+        <source><![CDATA[app.showing]]></source>
+        <target><![CDATA[Mostrando]]></target>
+      </trans-unit>
+      <trans-unit id="28" approved="yes">
+        <source><![CDATA[app.to]]></source>
+        <target><![CDATA[al]]></target>
+      </trans-unit>
+      <trans-unit id="29" approved="yes">
+        <source><![CDATA[app.of]]></source>
+        <target><![CDATA[de]]></target>
+      </trans-unit>
+      <trans-unit id="30" approved="yes">
+        <source><![CDATA[app.entries]]></source>
+        <target><![CDATA[registros]]></target>
+      </trans-unit>
+      <trans-unit id="31" approved="yes">
+        <source><![CDATA[app.nothing_found]]></source>
+        <target><![CDATA[No se encontraron registros]]></target>
+      </trans-unit>
+      <trans-unit id="32" approved="yes">
+        <source><![CDATA[app.no_records_available]]></source>
+        <target><![CDATA[No hay registros disponibles]]></target>
+      </trans-unit>
+      <trans-unit id="33" approved="yes">
+        <source><![CDATA[app.filtered_from]]></source>
+        <target><![CDATA[Filtrando de]]></target>
+      </trans-unit>
+      <trans-unit id="34" approved="yes">
+        <source><![CDATA[app.total_records]]></source>
+        <target><![CDATA[Total de registros]]></target>
+      </trans-unit>
+      <trans-unit id="35" approved="yes">
+        <source><![CDATA[app.loading]]></source>
+        <target><![CDATA[Cargando...]]></target>
+      </trans-unit>
+      <trans-unit id="36" approved="yes">
+        <source><![CDATA[app.search]]></source>
+        <target><![CDATA[Buscar]]></target>
+      </trans-unit>
+      <trans-unit id="37" approved="yes">
+        <source><![CDATA[app.no_matching_records_found]]></source>
+        <target><![CDATA[No hay registros que coincidan]]></target>
+      </trans-unit>
+      <trans-unit id="38" approved="yes">
+        <source><![CDATA[app.first]]></source>
+        <target><![CDATA[Primero]]></target>
+      </trans-unit>
+      <trans-unit id="39" approved="yes">
+        <source><![CDATA[app.last]]></source>
+        <target><![CDATA[Último]]></target>
+      </trans-unit>
+      <trans-unit id="40" approved="yes">
+        <source><![CDATA[app.next]]></source>
+        <target><![CDATA[Siguiente]]></target>
+      </trans-unit>
+      <trans-unit id="41" approved="yes">
+        <source><![CDATA[app.previous]]></source>
+        <target><![CDATA[Anterior]]></target>
+      </trans-unit>
+      <trans-unit id="42" approved="yes">
+        <source><![CDATA[app.copy.title]]></source>
+        <target><![CDATA[Copiado al portapapeles]]></target>
+      </trans-unit>
+      <trans-unit id="43" approved="yes">
+        <source><![CDATA[app.copy]]></source>
+        <target><![CDATA[Copiar]]></target>
+      </trans-unit>
+      <trans-unit id="44" approved="yes">
+        <source><![CDATA[app.print]]></source>
+        <target><![CDATA[Imprimir]]></target>
+      </trans-unit>
+      <trans-unit id="45" approved="yes">
+        <source><![CDATA[app.copied_one_row_to_clipboard]]></source>
+        <target><![CDATA[Se copio una fila al portapapeles]]></target>
+      </trans-unit>
+      <trans-unit id="46" approved="yes">
+        <source><![CDATA[app.copied_%d_rows_to_clipboard]]></source>
+        <target><![CDATA[Se copiaron %d filas al portapapeles]]></target>
+      </trans-unit>
+      <trans-unit id="47" approved="yes">
+        <source><![CDATA[app.dates.sunday]]></source>
+        <target><![CDATA[Domingo]]></target>
+      </trans-unit>
+      <trans-unit id="48" approved="yes">
+        <source><![CDATA[app.dates.monday]]></source>
+        <target><![CDATA[Lunes]]></target>
+      </trans-unit>
+      <trans-unit id="49" approved="yes">
+        <source><![CDATA[app.dates.tuesday]]></source>
+        <target><![CDATA[Martes]]></target>
+      </trans-unit>
+      <trans-unit id="50" approved="yes">
+        <source><![CDATA[app.dates.wednesday]]></source>
+        <target><![CDATA[Miércoles]]></target>
+      </trans-unit>
+      <trans-unit id="51" approved="yes">
+        <source><![CDATA[app.dates.thursday]]></source>
+        <target><![CDATA[Juéves]]></target>
+      </trans-unit>
+      <trans-unit id="52" approved="yes">
+        <source><![CDATA[app.dates.friday]]></source>
+        <target><![CDATA[Viernes]]></target>
+      </trans-unit>
+      <trans-unit id="53" approved="yes">
+        <source><![CDATA[app.dates.saturday]]></source>
+        <target><![CDATA[Sábado]]></target>
+      </trans-unit>
+      <trans-unit id="54" approved="yes">
+        <source><![CDATA[app.dates.sun]]></source>
+        <target><![CDATA[Dom]]></target>
+      </trans-unit>
+      <trans-unit id="55" approved="yes">
+        <source><![CDATA[app.dates.mon]]></source>
+        <target><![CDATA[Lun]]></target>
+      </trans-unit>
+      <trans-unit id="56" approved="yes">
+        <source><![CDATA[app.dates.tue]]></source>
+        <target><![CDATA[Mar]]></target>
+      </trans-unit>
+      <trans-unit id="57" approved="yes">
+        <source><![CDATA[app.dates.wed]]></source>
+        <target><![CDATA[Mié]]></target>
+      </trans-unit>
+      <trans-unit id="58" approved="yes">
+        <source><![CDATA[app.dates.thu]]></source>
+        <target><![CDATA[Jue]]></target>
+      </trans-unit>
+      <trans-unit id="59" approved="yes">
+        <source><![CDATA[app.dates.fri]]></source>
+        <target><![CDATA[Vie]]></target>
+      </trans-unit>
+      <trans-unit id="60" approved="yes">
+        <source><![CDATA[app.dates.sat]]></source>
+        <target><![CDATA[Sáb]]></target>
+      </trans-unit>
+      <trans-unit id="61" approved="yes">
+        <source><![CDATA[app.dates.su]]></source>
+        <target><![CDATA[Do]]></target>
+      </trans-unit>
+      <trans-unit id="62" approved="yes">
+        <source><![CDATA[app.dates.mo]]></source>
+        <target><![CDATA[Lu]]></target>
+      </trans-unit>
+      <trans-unit id="63" approved="yes">
+        <source><![CDATA[app.dates.tu]]></source>
+        <target><![CDATA[Ma]]></target>
+      </trans-unit>
+      <trans-unit id="64" approved="yes">
+        <source><![CDATA[app.dates.we]]></source>
+        <target><![CDATA[Mi]]></target>
+      </trans-unit>
+      <trans-unit id="65" approved="yes">
+        <source><![CDATA[app.dates.th]]></source>
+        <target><![CDATA[Ju]]></target>
+      </trans-unit>
+      <trans-unit id="66" approved="yes">
+        <source><![CDATA[app.dates.fr]]></source>
+        <target><![CDATA[Vi]]></target>
+      </trans-unit>
+      <trans-unit id="67" approved="yes">
+        <source><![CDATA[app.dates.sa]]></source>
+        <target><![CDATA[Sá]]></target>
+      </trans-unit>
+      <trans-unit id="68" approved="yes">
+        <source><![CDATA[app.dates.january]]></source>
+        <target><![CDATA[Enero]]></target>
+      </trans-unit>
+      <trans-unit id="69" approved="yes">
+        <source><![CDATA[app.dates.february]]></source>
+        <target><![CDATA[Febrero]]></target>
+      </trans-unit>
+      <trans-unit id="70" approved="yes">
+        <source><![CDATA[app.dates.march]]></source>
+        <target><![CDATA[Marzo]]></target>
+      </trans-unit>
+      <trans-unit id="71" approved="yes">
+        <source><![CDATA[app.dates.april]]></source>
+        <target><![CDATA[Abril]]></target>
+      </trans-unit>
+      <trans-unit id="72" approved="yes">
+        <source><![CDATA[app.dates.may]]></source>
+        <target><![CDATA[Mayo]]></target>
+      </trans-unit>
+      <trans-unit id="73" approved="yes">
+        <source><![CDATA[app.dates.june]]></source>
+        <target><![CDATA[Junio]]></target>
+      </trans-unit>
+      <trans-unit id="74" approved="yes">
+        <source><![CDATA[app.dates.july]]></source>
+        <target><![CDATA[Julio]]></target>
+      </trans-unit>
+      <trans-unit id="75" approved="yes">
+        <source><![CDATA[app.dates.august]]></source>
+        <target><![CDATA[Agosto]]></target>
+      </trans-unit>
+      <trans-unit id="76" approved="yes">
+        <source><![CDATA[app.dates.september]]></source>
+        <target><![CDATA[Septiembre]]></target>
+      </trans-unit>
+      <trans-unit id="77" approved="yes">
+        <source><![CDATA[app.dates.october]]></source>
+        <target><![CDATA[Octubre]]></target>
+      </trans-unit>
+      <trans-unit id="78" approved="yes">
+        <source><![CDATA[app.dates.november]]></source>
+        <target><![CDATA[Noviembre]]></target>
+      </trans-unit>
+      <trans-unit id="79" approved="yes">
+        <source><![CDATA[app.dates.december]]></source>
+        <target><![CDATA[Diciembre]]></target>
+      </trans-unit>
+      <trans-unit id="80" approved="yes">
+        <source><![CDATA[app.dates.jan]]></source>
+        <target><![CDATA[Ene]]></target>
+      </trans-unit>
+      <trans-unit id="81" approved="yes">
+        <source><![CDATA[app.dates.feb]]></source>
+        <target><![CDATA[Feb]]></target>
+      </trans-unit>
+      <trans-unit id="82" approved="yes">
+        <source><![CDATA[app.dates.mar]]></source>
+        <target><![CDATA[Mar]]></target>
+      </trans-unit>
+      <trans-unit id="83" approved="yes">
+        <source><![CDATA[app.dates.apr]]></source>
+        <target><![CDATA[Abr]]></target>
+      </trans-unit>
+      <trans-unit id="84" approved="yes">
+        <source><![CDATA[app.dates.jun]]></source>
+        <target><![CDATA[Jun]]></target>
+      </trans-unit>
+      <trans-unit id="85" approved="yes">
+        <source><![CDATA[app.dates.jul]]></source>
+        <target><![CDATA[Jul]]></target>
+      </trans-unit>
+      <trans-unit id="86" approved="yes">
+        <source><![CDATA[app.dates.aug]]></source>
+        <target><![CDATA[Ago]]></target>
+      </trans-unit>
+      <trans-unit id="87" approved="yes">
+        <source><![CDATA[app.dates.sep]]></source>
+        <target><![CDATA[Sep]]></target>
+      </trans-unit>
+      <trans-unit id="88" approved="yes">
+        <source><![CDATA[app.dates.oct]]></source>
+        <target><![CDATA[Oct]]></target>
+      </trans-unit>
+      <trans-unit id="89" approved="yes">
+        <source><![CDATA[app.dates.nov]]></source>
+        <target><![CDATA[Nov]]></target>
+      </trans-unit>
+      <trans-unit id="90" approved="yes">
+        <source><![CDATA[app.dates.dec]]></source>
+        <target><![CDATA[Dic]]></target>
+      </trans-unit>
+      <trans-unit id="91" approved="yes">
+        <source><![CDATA[app.today]]></source>
+        <target><![CDATA[Hoy]]></target>
+      </trans-unit>
+      <trans-unit id="92" approved="yes">
+        <source><![CDATA[app.clear]]></source>
+        <target><![CDATA[Limpiar]]></target>
+      </trans-unit>
+      <trans-unit id="93" approved="yes">
+        <source><![CDATA[app.profile.edit]]></source>
+        <target><![CDATA[Actualizar perfil]]></target>
+      </trans-unit>
+      <trans-unit id="94" approved="yes">
+        <source><![CDATA[app.first_name]]></source>
+        <target><![CDATA[Nombres]]></target>
+      </trans-unit>
+      <trans-unit id="95" approved="yes">
+        <source><![CDATA[app.last_name]]></source>
+        <target><![CDATA[Apellidos]]></target>
+      </trans-unit>
+      <trans-unit id="96" approved="yes">
+        <source><![CDATA[app.profile_picture]]></source>
+        <target><![CDATA[Imagen de perfil]]></target>
+      </trans-unit>
+      <trans-unit id="97" approved="yes">
+        <source><![CDATA[app.file.select]]></source>
+        <target><![CDATA[Seleccionar]]></target>
+      </trans-unit>
+      <trans-unit id="98" approved="yes">
+        <source><![CDATA[app.file.change]]></source>
+        <target><![CDATA[Cambiar]]></target>
+      </trans-unit>
+      <trans-unit id="99" approved="yes">
+        <source><![CDATA[app.file.remove]]></source>
+        <target><![CDATA[Remover]]></target>
+      </trans-unit>
+      <trans-unit id="100" approved="yes">
+        <source><![CDATA[app.cancel]]></source>
+        <target><![CDATA[Cancelar]]></target>
+      </trans-unit>
+      <trans-unit id="101" approved="yes">
+        <source><![CDATA[app.save]]></source>
+        <target><![CDATA[Guardar]]></target>
+      </trans-unit>
+      <trans-unit id="102" approved="yes">
+        <source><![CDATA[app.current_password]]></source>
+        <target><![CDATA[Contraseña actual]]></target>
+      </trans-unit>
+      <trans-unit id="103" approved="yes">
+        <source><![CDATA[app.username]]></source>
+        <target><![CDATA[Nombre de usuario]]></target>
+      </trans-unit>
+      <trans-unit id="104" approved="yes">
+        <source><![CDATA[app.email]]></source>
+        <target><![CDATA[Correo electrónico]]></target>
+      </trans-unit>
+      <trans-unit id="105" approved="yes">
+        <source><![CDATA[app.new_password]]></source>
+        <target><![CDATA[Nueva contraseña]]></target>
+      </trans-unit>
+      <trans-unit id="106" approved="yes">
+        <source><![CDATA[app.new_password_confirmation]]></source>
+        <target><![CDATA[Confirme su nueva contraseña]]></target>
+      </trans-unit>
+      <trans-unit id="107" approved="yes">
+        <source><![CDATA[app.messages.see_all]]></source>
+        <target><![CDATA[Ver todos los mensajes]]></target>
+      </trans-unit>
+      <trans-unit id="108" approved="yes">
+        <source><![CDATA[Welcome,]]></source>
+        <target><![CDATA[Bienvenido,]]></target>
+      </trans-unit>
+      <trans-unit id="109" approved="yes">
+        <source><![CDATA[app.notifications.list]]></source>
+        <target><![CDATA[Listado de notificaciones]]></target>
+      </trans-unit>
+      <trans-unit id="110" approved="yes">
+        <source><![CDATA[app.administrator.users.new]]></source>
+        <target><![CDATA[Nuevo usuario]]></target>
+      </trans-unit>
+      <trans-unit id="111" approved="yes">
+        <source><![CDATA[app.administrator.users.list]]></source>
+        <target><![CDATA[Listado de usuarios]]></target>
+      </trans-unit>
+      <trans-unit id="112" approved="yes">
+        <source><![CDATA[app.name]]></source>
+        <target><![CDATA[Nombre]]></target>
+      </trans-unit>
+      <trans-unit id="113" approved="yes">
+        <source><![CDATA[app.role]]></source>
+        <target><![CDATA[Rol]]></target>
+      </trans-unit>
+      <trans-unit id="114" approved="yes">
+        <source><![CDATA[app.enabled]]></source>
+        <target><![CDATA[Habilitado]]></target>
+      </trans-unit>
+      <trans-unit id="115" approved="yes">
+        <source><![CDATA[app.actions]]></source>
+        <target><![CDATA[Acciones]]></target>
+      </trans-unit>
+      <trans-unit id="116" approved="yes">
+        <source><![CDATA[app.yes]]></source>
+        <target><![CDATA[Sí]]></target>
+      </trans-unit>
+      <trans-unit id="117" approved="yes">
+        <source><![CDATA[app.no]]></source>
+        <target><![CDATA[No]]></target>
+      </trans-unit>
+      <trans-unit id="118" approved="yes">
+        <source><![CDATA[app.administrator.users.edit]]></source>
+        <target><![CDATA[Actualizar usuario]]></target>
+      </trans-unit>
+      <trans-unit id="119" approved="yes">
+        <source><![CDATA[app.administrator.settings]]></source>
+        <target><![CDATA[Configuraciones del APP]]></target>
+      </trans-unit>
+      <trans-unit id="120" approved="yes">
+        <source><![CDATA[app.administrator.settings.edit]]></source>
+        <target><![CDATA[Actualizar configuraciones del APP]]></target>
+      </trans-unit>
+      <trans-unit id="121" approved="yes">
+        <source><![CDATA[app.administrator]]></source>
+        <target><![CDATA[Administrador]]></target>
+      </trans-unit>
+      <trans-unit id="122" approved="yes">
+        <source><![CDATA[app.administrator.permissions.new]]></source>
+        <target><![CDATA[Nuevo permiso]]></target>
+      </trans-unit>
+      <trans-unit id="123" approved="yes">
+        <source><![CDATA[app.administrator.permissions.list]]></source>
+        <target><![CDATA[Listado de permisos]]></target>
+      </trans-unit>
+      <trans-unit id="124" approved="yes">
+        <source><![CDATA[app.code]]></source>
+        <target><![CDATA[Código]]></target>
+      </trans-unit>
+      <trans-unit id="125" approved="yes">
+        <source><![CDATA[app.description]]></source>
+        <target><![CDATA[Descripción]]></target>
+      </trans-unit>
+      <trans-unit id="126" approved="yes">
+        <source><![CDATA[app.administrator.permissions.edit]]></source>
+        <target><![CDATA[Actualizar permiso]]></target>
+      </trans-unit>
+      <trans-unit id="127" approved="yes">
+        <source><![CDATA[app.administrator.permissions.assign]]></source>
+        <target><![CDATA[Asignación de permisos]]></target>
+      </trans-unit>
+      <trans-unit id="128" approved="yes">
+        <source><![CDATA[app.permissions]]></source>
+        <target><![CDATA[Permisos]]></target>
+      </trans-unit>
+      <trans-unit id="129" approved="yes">
+        <source><![CDATA[app.administrator.companies.new]]></source>
+        <target><![CDATA[Nueva empresa]]></target>
+      </trans-unit>
+      <trans-unit id="130" approved="yes">
+        <source><![CDATA[app.administrator.companies.list]]></source>
+        <target><![CDATA[Listado de empresas]]></target>
+      </trans-unit>
+      <trans-unit id="131" approved="yes">
+        <source><![CDATA[app.logo]]></source>
+        <target><![CDATA[Logotipo]]></target>
+      </trans-unit>
+      <trans-unit id="132" approved="yes">
+        <source><![CDATA[app.expires_at]]></source>
+        <target><![CDATA[Fecha de expiración]]></target>
+      </trans-unit>
+      <trans-unit id="133" approved="yes">
+        <source><![CDATA[app.administrator.companies.edit]]></source>
+        <target><![CDATA[Actualizar empresa]]></target>
+      </trans-unit>
+      <trans-unit id="134" approved="yes">
+        <source><![CDATA[app.app.email.go_to_app]]></source>
+        <target><![CDATA[Llévame al APP]]></target>
+      </trans-unit>
+      <trans-unit id="135" approved="yes">
+        <source><![CDATA[app.download]]></source>
+        <target><![CDATA[Descargar]]></target>
+      </trans-unit>
+      <trans-unit id="136" approved="yes">
+        <source><![CDATA[app.roles.user]]></source>
+        <target><![CDATA[Usuario]]></target>
+      </trans-unit>
+      <trans-unit id="137" approved="yes">
+        <source><![CDATA[app.roles.admin]]></source>
+        <target><![CDATA[Usuario Administrador]]></target>
+      </trans-unit>
+      <trans-unit id="138" approved="yes">
+        <source><![CDATA[app.roles.api]]></source>
+        <target><![CDATA[Usuario del API]]></target>
+      </trans-unit>
+      <trans-unit id="139" approved="yes">
+        <source><![CDATA[app.roles.super_admin]]></source>
+        <target><![CDATA[Usuario super administrador]]></target>
+      </trans-unit>
+      <trans-unit id="140" approved="yes">
+        <source><![CDATA[app.roles.translator]]></source>
+        <target><![CDATA[Traductor]]></target>
+      </trans-unit>
+      <trans-unit id="141" approved="yes">
+        <source><![CDATA[security.login.welcome]]></source>
+        <target><![CDATA[Bienvenido a RTest]]></target>
+      </trans-unit>
+      <trans-unit id="142" approved="yes">
+        <source><![CDATA[security.login.message]]></source>
+        <target><![CDATA[RTest es un producto RTest]]></target>
+      </trans-unit>
+      <trans-unit id="143" approved="yes">
+        <source><![CDATA[security.login.username]]></source>
+        <target><![CDATA[Nombre de usuario]]></target>
+      </trans-unit>
+      <trans-unit id="144" approved="yes">
+        <source><![CDATA[security.login.password]]></source>
+        <target><![CDATA[Contraseña]]></target>
+      </trans-unit>
+      <trans-unit id="145" approved="yes">
+        <source><![CDATA[security.login.remember_me]]></source>
+        <target><![CDATA[Recuerdame]]></target>
+      </trans-unit>
+      <trans-unit id="146" approved="yes">
+        <source><![CDATA[security.login.submit]]></source>
+        <target><![CDATA[Entrar]]></target>
+      </trans-unit>
+      <trans-unit id="147" approved="yes">
+        <source><![CDATA[security.request.password]]></source>
+        <target><![CDATA[Olvidé mi contraseña]]></target>
+      </trans-unit>
+      <trans-unit id="148" approved="yes">
+        <source><![CDATA[security.request_password.welcome]]></source>
+        <target><![CDATA[Hola, ingrese su nombre de usuario para iniciar el proceso]]></target>
+      </trans-unit>
+      <trans-unit id="149" approved="yes">
+        <source><![CDATA[security.request_password.message]]></source>
+        <target><![CDATA[Si no recuerda su nombre de usuario, también puede intentar con su correo electrónico registrado]]></target>
+      </trans-unit>
+      <trans-unit id="150" approved="yes">
+        <source><![CDATA[resetting.request_password.username]]></source>
+        <target><![CDATA[Nombre de usuario]]></target>
+      </trans-unit>
+      <trans-unit id="151" approved="yes">
+        <source><![CDATA[resetting.request_password.submit]]></source>
+        <target><![CDATA[Recuperar]]></target>
+      </trans-unit>
+      <trans-unit id="152" approved="yes">
+        <source><![CDATA[security.login]]></source>
+        <target><![CDATA[Ingresar]]></target>
+      </trans-unit>
+      <trans-unit id="153" approved="yes">
+        <source><![CDATA[app.administrator.companies]]></source>
+        <target><![CDATA[Empresas]]></target>
+      </trans-unit>
+      <trans-unit id="154" approved="yes">
+        <source><![CDATA[app.administrator.permissions]]></source>
+        <target><![CDATA[Permisos]]></target>
+      </trans-unit>
+      <trans-unit id="155" approved="yes">
+        <source><![CDATA[app.administrator.permissions.assignment]]></source>
+        <target><![CDATA[Asignar permisos]]></target>
+      </trans-unit>
+      <trans-unit id="156" approved="yes">
+        <source><![CDATA[app.users]]></source>
+        <target><![CDATA[Usuarios]]></target>
+      </trans-unit>
+      <trans-unit id="157" approved="yes">
+        <source><![CDATA[app.expired_at]]></source>
+        <target><![CDATA[Fecha de expiración]]></target>
+      </trans-unit>
+      <trans-unit id="158" approved="yes">
+        <source><![CDATA[app.expired]]></source>
+        <target><![CDATA[Expirado]]></target>
+      </trans-unit>
+      <trans-unit id="159" approved="yes">
+        <source><![CDATA[app.password]]></source>
+        <target><![CDATA[Contraseña]]></target>
+      </trans-unit>
+      <trans-unit id="160" approved="yes">
+        <source><![CDATA[app.company]]></source>
+        <target><![CDATA[Empresa]]></target>
+      </trans-unit>
+      <trans-unit id="161" approved="yes">
+        <source><![CDATA[app.roles]]></source>
+        <target><![CDATA[Roles]]></target>
+      </trans-unit>
+      <trans-unit id="162" approved="yes">
+        <source><![CDATA[app.deleted_at]]></source>
+        <target><![CDATA[Fecha de eliminación]]></target>
+      </trans-unit>
+      <trans-unit id="163" approved="yes">
+        <source><![CDATA[app.url]]></source>
+        <target><![CDATA[URL]]></target>
+      </trans-unit>
+      <trans-unit id="164" approved="yes">
+        <source><![CDATA[app.api.url]]></source>
+        <target><![CDATA[URL del API]]></target>
+      </trans-unit>
+      <trans-unit id="165" approved="yes">
+        <source><![CDATA[app.apikey]]></source>
+        <target><![CDATA[API Key]]></target>
+      </trans-unit>
+      <trans-unit id="166" approved="yes">
+        <source><![CDATA[app.show]]></source>
+        <target><![CDATA[Mostrar]]></target>
+      </trans-unit>
+      <trans-unit id="167" approved="yes">
+        <source><![CDATA[app.edit]]></source>
+        <target><![CDATA[Editar]]></target>
+      </trans-unit>
+      <trans-unit id="168" approved="yes">
+        <source><![CDATA[app.delete]]></source>
+        <target><![CDATA[Eliminar]]></target>
+      </trans-unit>
+      <trans-unit id="169" approved="yes">
+        <source><![CDATA[app.delete_title]]></source>
+        <target><![CDATA[¿Está seguro?]]></target>
+      </trans-unit>
+      <trans-unit id="170" approved="yes">
+        <source><![CDATA[app.delete_description]]></source>
+        <target><![CDATA[Está a punto de eliminar un registro.]]></target>
+      </trans-unit>
+      <trans-unit id="171" approved="yes">
+        <source><![CDATA[app.body_format]]></source>
+        <target><![CDATA[Formato del body]]></target>
+      </trans-unit>
+      <trans-unit id="172" approved="yes">
+        <source><![CDATA[app.request_format]]></source>
+        <target><![CDATA[Formato]]></target>
+      </trans-unit>
+      <trans-unit id="173" approved="yes">
+        <source><![CDATA[app.api_key]]></source>
+        <target><![CDATA[API Key]]></target>
+      </trans-unit>
+      <trans-unit id="174" approved="yes">
+        <source><![CDATA[app.documentation_generated_on]]></source>
+        <target><![CDATA[Documentación generada en]]></target>
+      </trans-unit>
+      <trans-unit id="175" approved="yes">
+        <source><![CDATA[app.reset]]></source>
+        <target><![CDATA[Reiniciar]]></target>
+      </trans-unit>
+      <trans-unit id="176" approved="yes">
+        <source><![CDATA[app.error]]></source>
+        <target><![CDATA[Error]]></target>
+      </trans-unit>
+      <trans-unit id="177" approved="yes">
+        <source><![CDATA[app.error.message]]></source>
+        <target><![CDATA[Ha ocurrido un error mientras se procesaba la petición, inténtelo nuevamente más tarde.]]></target>
+      </trans-unit>
+      <trans-unit id="178" approved="yes">
+        <source><![CDATA[app.take_me_home]]></source>
+        <target><![CDATA[Ir al dashboard.]]></target>
+      </trans-unit>
+      <trans-unit id="179" approved="yes">
+        <source><![CDATA[app.user.remove.success]]></source>
+        <target><![CDATA[El usuario ha sido eliminado.]]></target>
+      </trans-unit>
+      <trans-unit id="180" approved="yes">
+        <source><![CDATA[app.user.remove.error]]></source>
+        <target><![CDATA[Error mientras se elimina usuario.]]></target>
+      </trans-unit>
+      <trans-unit id="181" approved="yes">
+        <source><![CDATA[app.user.new.success]]></source>
+        <target><![CDATA[Se ha creado el usuario.]]></target>
+      </trans-unit>
+      <trans-unit id="182" approved="yes">
+        <source><![CDATA[app.user.edit.success]]></source>
+        <target><![CDATA[Usuario actualizado.]]></target>
+      </trans-unit>
+      <trans-unit id="183" approved="yes">
+        <source><![CDATA[app.settings.edit.success]]></source>
+        <target><![CDATA[Configuraciones globales actualizadas.]]></target>
+      </trans-unit>
+      <trans-unit id="184" approved="yes">
+        <source><![CDATA[app.company.new.success]]></source>
+        <target><![CDATA[Empresa creada.]]></target>
+      </trans-unit>
+      <trans-unit id="185" approved="yes">
+        <source><![CDATA[app.company.edit.success]]></source>
+        <target><![CDATA[Empresa actualizada.]]></target>
+      </trans-unit>
+      <trans-unit id="186" approved="yes">
+        <source><![CDATA[app.company.remove.success]]></source>
+        <target><![CDATA[La empresa ha sido eliminada.]]></target>
+      </trans-unit>
+      <trans-unit id="187" approved="yes">
+        <source><![CDATA[app.company.remove.error]]></source>
+        <target><![CDATA[Hubo un error al intentar eliminar la empresa.]]></target>
+      </trans-unit>
+      <trans-unit id="188" approved="yes">
+        <source><![CDATA[app.permission.new.success]]></source>
+        <target><![CDATA[Nuevo permiso registrado.]]></target>
+      </trans-unit>
+      <trans-unit id="189" approved="yes">
+        <source><![CDATA[app.permission.edit.success]]></source>
+        <target><![CDATA[Permiso actualizado.]]></target>
+      </trans-unit>
+      <trans-unit id="190" approved="yes">
+        <source><![CDATA[app.permission.remove.success]]></source>
+        <target><![CDATA[El permiso ha sido eliminado.]]></target>
+      </trans-unit>
+      <trans-unit id="191" approved="yes">
+        <source><![CDATA[app.permission.remove.error]]></source>
+        <target><![CDATA[Error al intentar eliminar el permiso.]]></target>
+      </trans-unit>
+      <trans-unit id="192" approved="yes">
+        <source><![CDATA[app.profile.edit.success]]></source>
+        <target><![CDATA[Su perfil ha sido actualizado.]]></target>
+      </trans-unit>
+      <trans-unit id="193" approved="yes">
+        <source><![CDATA[app.profile.token.renew]]></source>
+        <target><![CDATA[Ahora ya tiene una nueva llave del API.]]></target>
+      </trans-unit>
+      <trans-unit id="194" approved="yes">
+        <source><![CDATA[app.impersonate_%username%]]></source>
+        <target><![CDATA[Ingresar como %username%]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

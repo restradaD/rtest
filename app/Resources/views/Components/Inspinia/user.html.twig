@@ -1,0 +1,26 @@
+{% trans_default_domain 'AppBundle' %}
+<div class="dropdown profile-element">
+    <span>
+        <a href="{{ path('grand_central') }}">
+            <img alt="image" class="img-circle" width="48px" height="48px" src="{{ app.user.picture ('48x48') }}"/>
+        </a>
+    </span>
+    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+        <span class="clear">
+            <span class="block m-t-xs">
+                <strong class="font-bold">{{ app.user }}</strong>
+            </span>
+            <span class="text-muted text-xs block">
+                {{ app.user.role | trans }} <b class="caret"></b>
+            </span>
+        </span>
+    </a>
+    <ul class="dropdown-menu animated fadeInRight m-t-xs">
+        <li><a href="{{ path('fos_user_change_password') }}">{{ 'app.password.change' | trans }}</a></li>
+        <li class="divider"></li>
+        <li><a href="{{ path('fos_user_security_logout') }}">{{ 'app.logout' | trans }}</a></li>
+    </ul>
+</div>
+<div class="logo-element">
+    {{ app_short_name }}
+</div>

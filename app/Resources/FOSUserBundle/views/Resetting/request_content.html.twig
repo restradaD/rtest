@@ -1,0 +1,13 @@
+{% trans_default_domain 'AppBundle' %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" class="m-t">
+    <div class="form-group">
+        <input type="text" id="username" class="form-control" placeholder="{{ 'resetting.request_password.username'|trans }}" name="username" required="required" />
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary m-b block full-width" value="{{ 'resetting.request_password.submit'|trans }}" />
+        <a href="{{ path('fos_user_security_login') }}">
+            <small>{{ 'security.login'|trans }}</small>
+        </a>
+    </div>
+</form>

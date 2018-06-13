@@ -1,0 +1,7 @@
+{% if is_granted('ROLE_PREVIOUS_ADMIN') %}
+    <div id="impersonate-logout">
+        <a href="{{ path('administrator_user_list', {'_switch_user': '_exit'}) }}" class="open-impersonate-logout">
+            <i class="fa fa-sign-out"></i>
+        </a>
+    </div>
+{% endif %}

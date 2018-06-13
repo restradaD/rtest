@@ -1,0 +1,17 @@
+services:
+    app.tools:
+        alias: 'AppBundle\Services\ToolsService'
+        public: true
+
+    app.setup:
+        alias: 'AppBundle\Services\SetupService'
+        public: true
+
+    app.fcm:
+        alias: 'AppBundle\Services\FCMService'
+        public: true
+
+    app.pagination_factory: '@AppBundle\Pagination\PaginationFactory'
+    api_key_user_provider: '@AppBundle\Security\ApiKeyUserProvider'
+    apikey_authenticator: '@AppBundle\Security\ApiKeyAuthenticator'
+    gedmo_doctrine_extensions.listener.ip_traceable: '@Gedmo\IpTraceable\IpTraceableListener'

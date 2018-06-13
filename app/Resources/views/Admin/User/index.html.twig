@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+{% import ":Components/Inspinia/UI:macros.html.twig" as UI %}
+
+{% block title %}{{ 'app.administrator.users.list' | trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">
+        <strong>{{ 'app.administrator.users.list' | trans }}</strong>
+    </li>
+{% endblock %}
+
+{% block buttons %}
+    <a href="{{ path('administrator_user_new') }}"
+       class="btn btn-primary ladda-button" data-style="expand-right">{{ 'app.administrator.users.new' | trans }}</a>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>{{ 'app.administrator.users.list' | trans }}</h5>
+            <div class="ibox-tools"></div>
+        </div>
+        <div class="ibox-content">
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered table-hover dataTables-example">
+                    <thead>
+                    <tr>
+                        <th>{{ 'app.profile_picture' | trans }}</th>
+                        <th>{{ 'app.name' | trans }}</th>
+                        <th>{{ 'app.username' | trans }}</th>
+                        <th>{{ 'app.email' | trans }}</th>
+                        <th>{{ 'app.role' | trans }}</th>
+                        <th>{{ 'app.enabled' | trans }}</th>
+                        <th width="{{ is_granted('ROLE_ALLOWED_TO_SWITCH') ? '150': '100' }}px">{{ 'app.actions' | trans }}</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    {% for user in users %}
+                        <tr class="gradeX">
+                            <td><img src="{{ user.picture('48x48') }}" alt="{{ user }}" class="img-circle" width="48px" height="48px"></td>
+                            <td>
+                                <a href="{{ path('app_user_profile', { 'usernameCanonical': user.usernameCanonical }) }}">{{ user }}</a>
+                                {% if is_granted(constant('ROLE_SUPER_ADMIN', user)) %}
+                                    <br>
+                                    <small>
+                                        <strong>{{ user.company }}</strong>
+                                    </small>
+                                {% endif %}
+                            </td>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.email }}</td>
+                            <td>{{ user.role | trans }}</td>
+                            <td>{{ user.enabled ? 'app.yes' | trans : 'app.no' | trans }}</td>
+                            <td>{#
+                                {% if is_granted('ROLE_ALLOWED_TO_SWITCH') %}
+                                    {% set status = app.user == user ? 'disabled' : '' %}
+                                    {% set url = app.user == user ? '#' : path('grand_central', { '_switch_user': user.username }) %}
+
+                                    <a href="{{ url }}" class="btn btn-info ladda-button block-ui {{ status }}" data-toggle="tooltip" title="{{ 'app.impersonate_%username%' | trans({ '%username%': user }) }}">
+                                        <i class="fa fa-retweet"></i>
+                                    </a>
+                                    &nbsp;
+                                {% endif %}#}
+                                {{ UI.editButton(path('administrator_user_edit', { 'id': user.id })) }}
+                                &nbsp;
+                                {{ UI.deleteButton(path('administrator_user_delete', { 'id': user.id })) }}
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                    <tfoot>
+                    <tr>
+                        <th>{{ 'app.profile_picture' | trans }}</th>
+                        <th>{{ 'app.name' | trans }}</th>
+                        <th>{{ 'app.username' | trans }}</th>
+                        <th>{{ 'app.email' | trans }}</th>
+                        <th>{{ 'app.role' | trans }}</th>
+                        <th>{{ 'app.enabled' | trans }}</th>
+                        <th>{{ 'app.actions' | trans }}</th>
+                    </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

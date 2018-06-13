@@ -1,0 +1,39 @@
+{% extends "base.html.twig" %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block title %}
+    {{ 'app.profile' | trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active"><strong>{{ 'app.profile' | trans }}</strong></li>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {% include "FOSUserBundle:Profile:edit_content.html.twig" %}
+{% endblock %}
+
+{% block javascript %}
+    {% jshrink %}
+    <script>
+        $(document).ready(function () {
+            var button = $('.btn-renovate');
+            button.ladda();
+
+            button.on('click', function (e) {
+                e.preventDefault();
+                var url = '{{ path('fos_user_profile_edit') }}?renovate=true';
+                $(this).ladda('start');
+
+                setTimeout(function () {
+                    window.location = url;
+                }, 200);
+
+            });
+
+            $('#fos_user_profile_form_apikey').removeAttr('disabled').attr('readonly', 'readonly');
+        });
+    </script>
+    {% endjshrink %}
+{% endblock %}

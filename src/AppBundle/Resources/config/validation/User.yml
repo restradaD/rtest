@@ -1,0 +1,32 @@
+AppBundle\Entity\User:
+    constraints:
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: username
+            groups: [create, edit]
+        - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:
+            fields: email
+            groups: [create, edit]
+    properties:
+        username:
+            - NotBlank:
+                message: fos_user.username.blank
+                groups: [create, edit]
+            - Length:
+                min: 2
+                max: 255
+                minMessage: fos_user.username.short
+                maxMessage: fos_user.username.long
+                groups: [create, edit]
+        email:
+            - NotBlank:
+                message: fos_user.email.blank
+                groups: [create, edit]
+            - Length:
+                min: 2
+                max: 255
+                minMessage: fos_user.email.short
+                maxMessage: fos_user.email.long
+                groups: [create, edit]
+            - Email:
+                message: fos_user.email.invalid
+                groups: [create, edit]

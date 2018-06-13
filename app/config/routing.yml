@@ -1,0 +1,60 @@
+locale:
+  path: /
+  defaults:  { _controller: AppBundle:APP/Default:grandCentral }
+
+manifest:
+  path: /manifest.json
+  defaults: { _controller: AppBundle:APP/Default:manifest }
+
+firebase_sw:
+  path: /firebase-messaging-sw.js
+  defaults: { _controller: AppBundle:APP/Default:firebaseMessagingSw }
+
+admin:
+    resource: "@AppBundle/Controller/Admin"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
+
+api:
+    resource: "@AppBundle/Controller/API/"
+    type:     annotation
+    prefix:   /
+
+app:
+    resource: "@AppBundle/Controller/APP/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
+
+super_admin:
+    resource: "@AppBundle/Controller/SuperAdmin/"
+    type:     annotation
+    prefix:   /{_locale}
+    requirements:
+        _locale: '%app_locales%'
+    defaults:
+        _locale: '%locale%'
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+lexik_translation_edition:
+    resource: "@LexikTranslationBundle/Resources/config/routing.yml"
+    prefix:   /translate
+
+NelmioApiDocBundle:
+    resource: "@NelmioApiDocBundle/Resources/config/routing.yml"
+    prefix:   /api/doc
+
+_liip_imagine:
+    resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"

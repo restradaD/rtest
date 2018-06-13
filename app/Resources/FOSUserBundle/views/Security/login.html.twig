@@ -1,0 +1,8 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block fos_user_content %}
+    <h3>{{ 'security.login.welcome' | trans }}</h3>
+    <p>{{ 'security.login.message' | trans }}</p>
+    {{ include('FOSUserBundle:Security:login_content.html.twig') }}
+{% endblock fos_user_content %}

@@ -1,0 +1,21 @@
+FOS\UserBundle\Model\User:
+    exclusion_policy: ALL
+    properties:
+        id:
+            expose: true
+        username:
+            expose: true
+        first_name:
+            expose: true
+        last_login:
+            expose: true
+        roles:
+            expose: true
+        email:
+            expose: true
+        company:
+            expose: true
+        enabled:
+            expose: true
+        locked:
+            expose: true

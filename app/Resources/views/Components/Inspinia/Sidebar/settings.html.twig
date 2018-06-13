@@ -1,0 +1,33 @@
+{% trans_default_domain 'AppBundle' %}
+<div class="sidebar-title">
+    <h3><i class="fa fa-gears"></i> {{ 'app.settings' | trans }}</h3>
+    <small><i class="fa fa-tim"></i> {{ 'app.sidebar.settings.subtitle' | trans }}</small>
+</div>
+
+<div class="setings-item">
+    <span>{{ 'app.notifications.show' | trans }}</span>
+    <div class="switch">
+        <div class="onoffswitch">
+            <input type="checkbox" name="showNotifications" class="onoffswitch-checkbox" id="showNotifications">
+            <label class="onoffswitch-label" for="showNotifications">
+                <span class="onoffswitch-inner"></span>
+                <span class="onoffswitch-switch"></span>
+            </label>
+        </div>
+    </div>
+</div>
+
+<div class="setings-item settings-item">
+    <span>{{ 'app.language.change' | trans }}</span>
+    <br><br>
+    <div class="text-center">
+        {% for locale in locales %}
+            {% set redirectTo = path(route, routeParams|merge({ _locale: locale.code })) %}
+
+            <a href="{{ path('change_language', { 'redirectTo': redirectTo, 'locale': locale.code }) }}"
+               class="btn btn-block {{ app.request.locale == locale.code ? 'btn-outline btn-success' : 'btn-white' }}">
+                <img src="/img/flags/16/{{ locale.country }}.png"> {{ locale.name }}
+            </a>
+        {% endfor %}
+    </div>
+</div>

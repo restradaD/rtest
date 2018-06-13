@@ -1,0 +1,80 @@
+# Learn more about services, parameters and containers at
+# http://symfony.com/doc/current/book/service_container.html
+imports:
+    - { resource: legacy_aliases.yml }
+
+parameters:
+#    parameter_name: value
+    jms_serializer.json_serialization_visitor.class: AppBundle\Serializer\JsonSerialization
+
+services:
+    _defaults:
+        autowire: true
+        autoconfigure: true
+        public: false
+
+    AppBundle\:
+        resource: '../../src/AppBundle/*'
+        exclude: '../../src/AppBundle/{Entity,Repository,Tests,Controller,Serializer,DataFixtures}'
+
+    # Gedmo Doctrine extensions
+    Gedmo\IpTraceable\IpTraceableListener:
+        autowire: false
+        tags:
+            - { name: doctrine.event_subscriber, connection: default }
+        calls:
+            - [setAnnotationReader, [ "@annotation_reader"]]
+
+    AppBundle\EventListener\IpTraceListener:
+        autowire: false
+        arguments:
+            - "@gedmo_doctrine_extensions.listener.ip_traceable"
+
+    # FOSUser extensions
+    AppBundle\Form\APP\ProfileFormType:
+        tags:
+            - { name: form.type, alias: app_user_profile }
+
+    AppBundle\Form\APP\ChangePasswordFormType:
+        autowire: false
+        arguments: ["%fos_user.model.user.class%"]
+        tags:
+            - { name: form.type, alias: app_user_change_password }
+
+    AppBundle\EventListener\LocaleListener:
+        autowire: false
+        arguments: ['%kernel.default_locale%']
+        tags:
+            - { name: kernel.event_subscriber }
+
+    AppBundle\Services\FCMService:
+        autowire: false
+        arguments: ["%fcm_server_key%"]
+
+    # Subscribers
+    AppBundle\EventSubscriber\UserCreationSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }
+        arguments: ['@service_container']
+
+    # Notifications
+    AppBundle\EventSubscriber\NotificationsSubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }
+        arguments: ['@service_container']
+
+    AppBundle\EventSubscriber\CompanySubscriber:
+        tags:
+            - { name: doctrine.event_subscriber }
+        arguments: ['@service_container']
+
+    twig.extension.intl:
+        class: Twig_Extensions_Extension_Intl
+        tags:
+            - { name: twig.extension }
+
+    app.menu_builder:
+        class: AppBundle\Menu\MenuBuilder
+        arguments: ["@knp_menu.factory", "@service_container"]
+        tags:
+            - { name: knp_menu.menu_builder, method: mainMenu, alias: main } # The alias is what is used to retrieve the menu

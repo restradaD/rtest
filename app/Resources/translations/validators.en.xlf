@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="file.ext">
+    <body>
+      <trans-unit id="1" approved="yes">
+        <source><![CDATA[app.constraints.contact.empty_customers]]></source>
+        <target><![CDATA[You have to select at least one customer.]]></target>
+      </trans-unit>
+      <trans-unit id="2" approved="yes">
+        <source><![CDATA[fos_user.email.blank]]></source>
+        <target><![CDATA[Email cannot be blank]]></target>
+      </trans-unit>
+      <trans-unit id="3" approved="yes">
+        <source><![CDATA[fos_user.username.blank]]></source>
+        <target><![CDATA[This field cannot be blank.]]></target>
+      </trans-unit>
+      <trans-unit id="4" approved="yes">
+        <source><![CDATA[fos_user.password.blank]]></source>
+        <target><![CDATA[Enter a valid password.]]></target>
+      </trans-unit>
+      <trans-unit id="5" approved="yes">
+        <source><![CDATA[fos_user.current_password.invalid]]></source>
+        <target><![CDATA[Your current password is invalid]]></target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

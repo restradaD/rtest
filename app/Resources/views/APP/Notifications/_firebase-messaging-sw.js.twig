@@ -1,0 +1,27 @@
+importScripts('https://www.gstatic.com/firebasejs/{{ fcm_scripts_version }}/firebase-app.js');
+importScripts('https://www.gstatic.com/firebasejs/{{ fcm_scripts_version }}/firebase-messaging.js');
+
+var config = {
+    apiKey: "{{ fcm_apikey | raw }}",
+    authDomain: "{{ fcm_auth_domain | raw }}",
+    databaseURL: "{{ fcm_database_url | raw }}",
+    storageBucket: "{{ fcm_storage_bucket | raw }}",
+    messagingSenderId: "{{ fcm_messaging_sender_id | raw }}"
+};
+
+firebase.initializeApp(config);
+
+const messaging = firebase.messaging();
+
+messaging.setBackgroundMessageHandler(function (payload) {
+    const title = payload.data.title;
+    const options = {
+        tag: payload.data.id,
+        vibrate: [200, 100, 200, 100, 200, 100, 200],
+        body: payload.data.description,
+        data: payload.data,
+        closeOnClick: true
+    };
+
+    return self.registration.showNotification(title, options);
+});

@@ -1,0 +1,34 @@
+imports:
+    - { resource: config.yml }
+
+#doctrine:
+#    orm:
+#        metadata_cache_driver: apc
+#        result_cache_driver: apc
+#        query_cache_driver: apc
+
+monolog:
+    handlers:
+        mail:
+            type:         fingers_crossed
+            action_level: critical
+            handler:      buffered
+        buffered:
+            type:         buffer
+            handler:      swift
+        swift:
+            type:         swift_mailer
+            from_email:   '%app_email%'
+            to_email:     '%error_email_list%'
+            subject:      'An Error Ocurred on %app_name%!'
+            level:        debug
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  'php://stderr'
+            level: debug
+        console:
+            type:  console

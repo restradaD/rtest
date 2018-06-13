@@ -1,0 +1,86 @@
+<script src="https://www.gstatic.com/firebasejs/{{ fcm_scripts_version }}/firebase.js"></script>
+
+<script src="https://www.gstatic.com/firebasejs/{{ fcm_scripts_version }}/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/{{ fcm_scripts_version }}/firebase-messaging.js"></script>
+
+<script>
+    var config = {
+        apiKey: "{{ fcm_apikey | raw }}",
+        authDomain: "{{ fcm_auth_domain | raw }}",
+        databaseURL: "{{ fcm_database_url | raw }}",
+        storageBucket: "{{ fcm_storage_bucket | raw }}",
+        messagingSenderId: "{{ fcm_messaging_sender_id | raw }}"
+    };
+
+    firebase.initializeApp(config);
+    const messaging = firebase.messaging();
+
+    messaging.requestPermission()
+        .then(function() {
+            updateUserToken();
+        })
+        .catch(function(err) {
+            console.log('Unable to get permission to notify.', err);
+        });
+
+    var notificationUrl;
+    messaging.onMessage(function (payload) {
+        console.log('onMessage: ', payload);
+
+        notificationUrl = payload.data.url;
+        var Notify = window.Notify.default;
+
+        if (!Notify.needsPermission) {
+            var myNotification = new Notify(payload.data.title, {
+                body: payload.data.description,
+                tag: payload.data.id,
+                closeOnClick: true,
+                vibrate: [200, 100, 200, 100, 200, 100, 200],
+                data: payload.data,
+                notifyClick: onNotificationClick
+            });
+
+            myNotification.show();
+        } else if (Notify.isSupported()) {
+            Notify.requestPermission();
+        }
+    });
+
+    function onNotificationClick() {
+        if ( notificationUrl ) {
+            window.location = notificationUrl;
+        }
+    }
+
+    messaging.onTokenRefresh(function() {
+        messaging.getToken()
+            .then(function(refreshedToken) {
+                console.log('Token refreshed.');
+                sendTokenToServer(refreshedToken);
+                updateUserToken();
+            })
+            .catch(function(err) {
+                console.log('Unable to retrieve refreshed token ', err);
+            });
+    });
+
+    function updateUserToken() {
+        messaging.getToken()
+            .then(function(currentToken) {
+                if (currentToken) {
+                    sendTokenToServer(currentToken);
+                } else {
+                    console.log('No Instance ID token available. Request permission to generate one.');
+                }
+            })
+            .catch(function(err) {
+                console.log('An error occurred while retrieving token. ', err);
+            });
+    }
+
+
+    function sendTokenToServer(currentToken) {
+        $.client['users']['devices'].create("{{ app.user.username }}", { uuid: currentToken, os: "web" });
+    }
+
+</script>

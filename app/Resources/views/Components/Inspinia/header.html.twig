@@ -1,0 +1,21 @@
+{% trans_default_domain 'AppBundle' %}
+<div class="row border-bottom">
+    <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i></a>
+            {{ include(':Components/Inspinia:search.html.twig') }}
+        </div>
+        <ul class="nav navbar-top-links navbar-right">
+            <li class="dropdown">
+                {{ include(':Components/Inspinia:notifications.html.twig') }}
+            </li>
+            {#
+            <li class="dropdown">
+                {{ render(controller('AppBundle:APP/Default:locales', { 'request': app.request })) }}
+            </li>#}
+            <li>
+                <a href="{{ path('fos_user_security_logout') }}"><i class="fa fa-sign-out"></i> {{ 'app.logout' | trans }}</a>
+            </li>
+        </ul>
+    </nav>
+</div>

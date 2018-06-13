@@ -1,0 +1,34 @@
+{% trans_default_domain 'AppBundle' %}
+{{ form_start(form, { 'attr': { 'autocomplete': 'new-password' } }) }}
+
+{{ form_row(form.first_name) }}
+{{ form_row(form.last_name) }}
+{{ form_row(form.username, { 'attr': { 'autocomplete': 'new-password' } }) }}
+{{ form_row(form.passcode, { 'attr': { 'autocomplete': 'new-password' } }) }}
+
+{% if is_granted(constant('ROLE_SUPER_ADMIN', app.user)) %}
+    {{ form_row(form.company) }}
+{% endif %}
+
+{% if user.id %}
+    <div class="form-group ">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-10">
+            <img height="100px" class="animated tada" src="{{ user.picture }}" alt="{{ user }}" />
+        </div>
+    </div>
+{% endif %}
+
+{{ form_row(form.photo) }}
+{{ form_row(form.email) }}
+{{ form_row(form.roles) }}
+{{ form_row(form.enabled) }}
+{{ form_row(form.deletedAt) }}
+
+<div class="form-group">
+    <div class="col-sm-4 col-sm-offset-2">
+        <a class="btn btn-white" href="{{ path('administrator_user_list') }}">{{ 'app.cancel' | trans }}</a>
+        <button class="ladda-button btn btn-primary" type="submit" data-style="zoom-in">{{ 'app.save'|trans }}</button>
+    </div>
+</div>
+{{ form_end(form) }}

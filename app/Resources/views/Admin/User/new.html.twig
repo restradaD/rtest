@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block title %}{{ 'app.administrator.users.new' | trans }}{% endblock %}
+
+{% block breadcrumb %}
+    <li><a href="{{ path('administrator_user_list') }}">{{ 'app.administrator.users.list' | trans }}</a></li>
+    <li class="active">
+        <strong>{{ 'app.administrator.users.new' | trans }}</strong>
+    </li>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>{{ 'app.administrator.users.new' | trans }}</h5>
+            <div class="ibox-tools">
+            </div>
+        </div>
+        <div class="ibox-content">
+            {{ include(':Admin/User:_form.html.twig') }}
+        </div>
+    </div>
+
+{% endblock %}

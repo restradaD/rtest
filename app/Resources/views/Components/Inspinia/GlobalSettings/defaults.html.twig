@@ -1,0 +1,243 @@
+{% trans_default_domain 'AppBundle' %}
+
+<input type="hidden" title="trans-yes" id="trans-yes" value="{{ 'app.yes' | trans }}">
+<input type="hidden" title="trans-no" id="trans-no" value="{{ 'app.no' | trans }}">
+
+<div id="blockUIMessage" style="display:none;">
+    <strong>{{ 'app.processing' | trans }}</strong>
+</div>
+
+{% jshrink %}
+<script>
+    $.client = new $.RestClient('{{ get('url') }}api/v1/', { ajax: { headers: { 'Content-Type': 'application/json', 'apikey': '{{ app.user.apikey | default('') }}' } } });
+
+    /** Current User information */
+    var me = new $.RestClient('{{ get('apiUrl') }}me/');
+
+    /** Permissions API namespace */
+    $.client.add('permissions', {stripTrailingSlash: true});
+    $.client['permissions'].add('role', {stripTrailingSlash: true});
+
+    /** Users API declaration */
+    $.client.add('users', {stripTrailingSlash: true});
+    $.client['users'].add('to', {stripTrailingSlash: true});
+    /** Devices API declaration */
+    $.client['users'].add('devices', {stripTrailingSlash: true});
+
+    /** Notifications API declaration */
+    $.client.add('notifications', {stripTrailingSlash: true});
+    $.client['notifications'].addVerb('setup', 'GET');
+    $.client['notifications'].addVerb('count', 'GET');
+
+    /** Notifications channel API declaration */
+    $.client.add('notification-channels', {stripTrailingSlash: true});
+    $.client['notification-channels'].add('notification-types', {stripTrailingSlash: true});
+
+    /** Notification type API declaration */
+    $.client.add('notification-types', {stripTrailingSlash: true});
+
+    /** Configure moment.js */
+    moment.locale("{{ app.request.locale | locale_code  }}");
+
+    /** Check if device is mobile */
+    var isMobile;
+    if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+        isMobile = true;
+    }
+
+    $(document).ready(function(){
+        /**
+         * Return unseen notifications count
+         * @return defer
+         * */
+        function getUnseenNotifications() {
+            var defer = $.Deferred();
+            defer.notify('Connecting to API...');
+
+            var request = $.client['notifications'].count();
+
+            request.done(function (notifications) {
+                defer.resolve(notifications);
+            });
+
+            request.error(function (response) {
+                defer.reject(response.statusText);
+            });
+
+            return defer;
+        }
+
+        /**
+         * Return notifications collection
+         * @return defer
+         * */
+        function getNotifications(limit, offset) {
+            var defer = $.Deferred();
+            defer.notify('Connecting to API...');
+            var request = $.client['notifications'].read({ limit: limit, offset: offset });
+
+            request.done(function (notifications) {
+                defer.resolve(notifications);
+            });
+
+            request.error(function (response) {
+                defer.reject(response.statusText);
+            });
+
+            return defer;
+        }
+
+        /**
+         * Draws notifications UI
+         * @return defer
+         * */
+        function drawNotificationsUI() {
+            var defer = $.Deferred();
+            defer.notify('Drawing...');
+            var notificationCanvas = $('ul.dropdown-alerts');
+
+            $.when(getNotifications(5, 0)).then(function (response) {
+                var notifications = response.recordset;
+                $('#notificationTemplate').tmpl(notifications).prependTo(notificationCanvas);
+
+                if (notifications.length === 0) {
+                    var h3 = $('<h3/>').addClass('text-center').html('{{ 'app.notifications.nothing_found' | trans }}');
+                    var noContent = $('<li/>').append(h3);
+                    notificationCanvas.html(noContent);
+                }
+
+                defer.resolve(true);
+            }, function (error) {
+                defer.reject(error);
+            });
+
+            return defer;
+        }
+
+        /**
+         * Builds the entire UI for notifications
+         * */
+        function buildNotificationsUI() {
+            var defer = $.Deferred();
+            defer.notify('Building notifications UI...');
+
+            $.when(drawNotificationsUI()).then(function () {
+                $.when(getUnseenNotifications()).then(function (notifications) {
+                    if (notifications.count > 0) {
+                        $('.count-info').append('<span class="label label-primary">'+ notifications.count +'</span>');
+                    }
+                });
+            }, function (message) {
+                error(message);
+            });
+
+            return defer;
+        }
+
+        /**
+         * Start page.
+         * */
+        function loadDefaults() {
+            buildNotificationsUI();
+        }
+
+        loadDefaults();
+
+        /**
+         * DataTablesJS defaults
+         * */
+        $.extend( true, $.fn.dataTable.defaults, {
+            pageLength: 10,
+            responsive: true,
+            order: [],
+            columnDefs: [ {
+                "targets"  : 'no-sort',
+                "orderable": false
+            }],
+            dom: '<"html5buttons"B>lTfgitp',
+            "oLanguage": {
+                "sLengthMenu": "_MENU_",
+                "sInfo": "{{ 'app.showing' | trans }} <strong>_START_ {{ 'app.to' | trans }} _END_</strong> {{ 'app.of' | trans }} <strong>_TOTAL_</strong> {{ 'app.entries' | trans }}",
+                "zeroRecords": "{{ 'app.nothing_found' | trans }}",
+                "infoEmpty": "{{ 'app.no_records_available' | trans }}",
+                "sInfoEmpty": "{{ "app.showing" | trans }} <strong>0 {{ "app.to" | trans }} 0 {{ "app.of" | trans }} 0</strong> {{ "app.entries" | trans }}",
+                "infoFiltered": "({{ 'app.filtered_from' | trans }} _MAX_ {{ 'app.total_records' | trans }})",
+                "sProcessing":     "{{ 'app.processing' | trans }}",
+                "sLoadingRecords": "{{ 'app.loading' | trans }}",
+                "sSearch":         "{{ 'app.search' | trans }}",
+                "sZeroRecords":    "{{ 'app.no_matching_records_found' | trans }}",
+                "oPaginate": {
+                    "sFirst":    "{{ 'app.first' | trans }}",
+                    "sLast":     "{{ 'app.last' | trans }}",
+                    "sNext":     "{{ 'app.next' | trans }}",
+                    "sPrevious": "{{ 'app.previous' | trans }}"
+                },
+                "buttons": {
+                    "copyTitle": "{{ 'app.copy.title' | trans }}",
+                    "copy": "{{ 'app.copy' | trans }}",
+                    "print": "{{ 'app.print' | trans }}",
+                    "copySuccess": {
+                        1:"{{ 'app.copied_one_row_to_clipboard' | trans }}",
+                        _:"{{ 'app.copied_%d_rows_to_clipboard' | trans }}"
+                    }
+                }
+            },
+            buttons: [
+                {extend: 'copy'},
+                {extend: 'csv'},
+                {extend: 'excel'},
+                {extend: 'pdf'},
+
+                {
+                    extend: 'print',
+                    customize: function (win) {
+                        $(win.document.body).addClass('white-bg');
+                        $(win.document.body).css('font-size', '10px');
+
+                        $(win.document.body).find('table')
+                            .addClass('compact')
+                            .css('font-size', 'inherit');
+                    }
+                }
+            ]
+        });
+
+        /**
+         * Datepicker JS defaults
+         * */
+        if ($.fn.datepicker.dates) {
+            $.fn.datepicker.dates['{{ app.request.locale | locale_code }}'] = {
+                days: ["{{ 'app.dates.sunday' | trans }}", "{{ 'app.dates.monday' | trans }}", "{{ 'app.dates.tuesday' | trans }}", "{{ 'app.dates.wednesday' | trans }}", "{{ 'app.dates.thursday' | trans }}", "{{ 'app.dates.friday' | trans }}", "{{ 'app.dates.saturday' | trans }}"],
+                daysShort: ["{{ 'app.dates.sun' | trans }}", "{{ 'app.dates.mon' | trans }}", "{{ 'app.dates.tue' | trans }}", "{{ 'app.dates.wed' | trans }}", "{{ 'app.dates.thu' | trans }}", "{{ 'app.dates.fri' | trans }}", "{{ 'app.dates.sat' | trans }}"],
+                daysMin: ["{{ 'app.dates.su' | trans }}", "{{ 'app.dates.mo' | trans }}", "{{ 'app.dates.tu' | trans }}", "{{ 'app.dates.we' | trans }}", "{{ 'app.dates.th' | trans }}", "{{ 'app.dates.fr' | trans }}", "{{ 'app.dates.sa' | trans }}"],
+                months: ["{{ 'app.dates.january' | trans }}", "{{ 'app.dates.february' | trans }}", "{{ 'app.dates.march' | trans }}", "{{ 'app.dates.april' | trans }}", "{{ 'app.dates.may' | trans }}", "{{ 'app.dates.june' | trans }}", "{{ 'app.dates.july' | trans }}", "{{ 'app.dates.august' | trans }}", "{{ 'app.dates.september' | trans }}", "{{ 'app.dates.october' | trans }}", "{{ 'app.dates.november' | trans }}", "{{ 'app.dates.december' | trans }}"],
+                monthsShort: ["{{ 'app.dates.jan' | trans }}", "{{ 'app.dates.feb' | trans }}", "{{ 'app.dates.mar' | trans }}", "{{ 'app.dates.apr' | trans }}", "{{ 'app.dates.may' | trans }}", "{{ 'app.dates.jun' | trans }}", "{{ 'app.dates.jul' | trans }}", "{{ 'app.dates.aug' | trans }}", "{{ 'app.dates.sep' | trans }}", "{{ 'app.dates.oct' | trans }}", "{{ 'app.dates.nov' | trans }}", "{{ 'app.dates.dec' | trans }}"],
+                today: "{{ 'app.today' | trans }}",
+                clear: "{{ 'app.clear' | trans }}",
+                format: "yyyy-mm-dd",
+                titleFormat: "MM yyyy",
+                weekStart: 0
+            };
+
+            $.fn.datepicker.defaults.language = '{{ app.request.locale | locale_code }}';
+            $.fn.datepicker.defaults.format = 'yyyy-mm-dd';
+            $.fn.datepicker.defaults.startView = 1;
+            $.fn.datepicker.defaults.todayBtn = "linked";
+            $.fn.datepicker.defaults.keyboardNavigation = false;
+            $.fn.datepicker.defaults.forceParse = false;
+            $.fn.datepicker.defaults.autoclose = true;
+            $.fn.datepicker.defaults.todayHighlight = true;
+        }
+
+
+        /**
+         * Bootstrap datetimepicker defaults
+         * */
+        if ($.fn.datetimepicker) {
+            $.fn.datetimepicker.defaults.locale = '{{ app.request.locale | locale_code }}';
+            $.fn.datetimepicker.defaults.format = 'YYYY-MM-DD HH:mm:ss';
+        }
+
+    });
+</script>
+{% endjshrink %}

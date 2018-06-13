@@ -1,0 +1,72 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/book/security.html
+security:
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+        ROLE_API:         ROLE_USER
+        ROLE_ADMIN:       [ROLE_USER, ROLE_API]
+        ROLE_APP:         [ROLE_USER, ROLE_API]
+        ROLE_SUPER_ADMIN: [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+        ROLE_TRANSLATOR:  ROLE_USER
+
+    # http://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    providers:
+        fos_userbundle:
+            id: fos_user.user_provider.username_email
+        api_key_user_provider:
+            id: api_key_user_provider
+
+    firewalls:
+        # disables authentication for assets and the profiler, adapt it according to your needs
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        api_doc:
+            pattern:    ^/api/doc
+            anonymous:  ~
+            security:   true
+            http_basic:
+                provider: fos_userbundle
+            logout_on_user_change: true
+
+        api_auth:
+            pattern: ^/api/auth/.*
+            stateless: true
+            anonymous:  ~
+
+        api:
+            pattern: ^/api/.*
+            stateless: true
+            simple_preauth:
+                authenticator: apikey_authenticator
+            provider: api_key_user_provider
+
+        main:
+            switch_user:
+                provider: fos_userbundle
+            pattern: ^/
+            form_login:
+                provider: fos_userbundle
+                csrf_token_generator: security.csrf.token_manager
+            logout:       true
+            anonymous:    true
+            logout_on_user_change: true
+
+    access_control:
+        - { path: '^/manifest.json', roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
+        - { path: '^/firebase-messaging-sw.js', roles: [ IS_AUTHENTICATED_ANONYMOUSLY ] }
+        - { path: '^/api/auth', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/api', role: ROLE_API }
+        - { path: '^/(%app_locales%)/notifications', role: ROLE_USER }
+        - { path: '^/(%app_locales%)/profile', role: ROLE_USER }
+        - { path: '^/(%app_locales%)/login$', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/(%app_locales%)/register', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/(%app_locales%)/resetting', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/(%app_locales%)/session', role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: '^/translate', role: [ROLE_TRANSLATOR, ROLE_SUPER_ADMIN] }
+        - { path: '^/(%app_locales%)/administrator', role: [ROLE_SUPER_ADMIN, ROLE_ADMIN] }
+        - { path: '^/(%app_locales%)/', role: ROLE_APP }

@@ -1,0 +1,39 @@
+{% trans_default_domain 'AppBundle' %}
+<div class="sidebar-title">
+    <h3> <i class="fa fa-comments-o"></i> {{ 'app.notes.latest' | trans }}</h3>
+    <small><i class="fa fa-tim"></i> {{ 'app.sidebar.notes.subtitle' | trans }}</small>
+</div>
+
+<div>
+    <div class="sidebar-message">
+        <a href="#">
+            <div class="pull-left text-center">
+                <img alt="image" class="img-circle message-avatar" src="{{ asset('img/a1.jpg') }}">
+
+                <div class="m-t-xs">
+                    <i class="fa fa-star text-warning"></i>
+                    <i class="fa fa-star text-warning"></i>
+                </div>
+            </div>
+            <div class="media-body">
+
+                There are many variations of passages of Lorem Ipsum available.
+                <br>
+                <small class="text-muted">Today 4:21 pm</small>
+            </div>
+        </a>
+    </div>
+    <div class="sidebar-message">
+        <a href="#">
+            <div class="pull-left text-center">
+                <img alt="image" class="img-circle message-avatar" src="{{ asset('img/a2.jpg') }}">
+            </div>
+            <div class="media-body">
+                The point of using Lorem Ipsum is that it has a more-or-less normal.
+                <br>
+                <small class="text-muted">Yesterday 2:45 pm</small>
+            </div>
+        </a>
+    </div>
+
+</div>

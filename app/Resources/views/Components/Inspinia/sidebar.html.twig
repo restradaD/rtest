@@ -1,0 +1,38 @@
+{% trans_default_domain 'AppBundle' %}
+<div id="right-sidebar" class="animated">
+    <div class="slimScrollDiv" style="position: relative; overflow: hidden; width: auto; height: 100%;"><div class="sidebar-container" style="overflow: hidden; width: auto; height: 100%;">
+
+        <ul class="nav nav-tabs navs-3">
+            <li class="active">
+                <a data-toggle="tab" href="#tab-notes" aria-expanded="false">
+                    {{ 'app.notes' | trans }}
+                </a>
+            </li>
+            <li class="">
+                <a data-toggle="tab" href="#tab-projects" aria-expanded="false">
+                    {{ 'app.projects' | trans }}
+                </a>
+            </li>
+            <li class="">
+                <a data-toggle="tab" href="#tab-settings" aria-expanded="true">
+                    <i class="fa fa-gear"></i>
+                </a>
+            </li>
+        </ul>
+
+        <div class="tab-content">
+            <div id="tab-notes" class="tab-pane active">
+                {{ include(':Components/Inspinia/Sidebar:notes.html.twig') }}
+            </div>
+
+            <div id="tab-projects" class="tab-pane">
+                {{ include(':Components/Inspinia/Sidebar:projects.html.twig') }}
+            </div>
+
+            <div id="tab-settings" class="tab-pane">
+                {{ render(controller('AppBundle:APP/Default:locales', { 'request': app.request })) }}
+            </div>
+        </div>
+
+    </div><div class="slimScrollBar" style="background: rgb(0, 0, 0); width: 7px; position: absolute; top: 0; opacity: 0.4; display: none; border-radius: 7px; z-index: 99; right: 1px; height: 221.376px;"></div><div class="slimScrollRail" style="width: 7px; height: 100%; position: absolute; top: 0; display: none; border-radius: 7px; background: rgb(51, 51, 51); opacity: 0.4; z-index: 90; right: 1px;"></div></div>
+</div>

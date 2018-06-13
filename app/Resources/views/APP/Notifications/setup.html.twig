@@ -1,0 +1,207 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block title %}
+    {{ 'app.notifications_setup' | trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">
+        <strong>{{ 'app.notifications_setup' | trans }}</strong>
+    </li>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>{{ 'app.notifications_setup' | trans }}</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <table id="notifications-setup-table" class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th width="20%">&nbsp;</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script id="tableHeadTemplate" type="text/x-jquery-tmpl">
+        <th class="text-center">${name}</th>
+    </script>
+
+    <script id="tableBodyTemplate" type="text/x-jquery-tmpl">
+        <tr>
+            <td>${type.name}</td>
+            {{ '{{' }}each(index, channel) channels{{ '}}' }}
+                  <td class="text-center">
+                    <input type="checkbox" data-channel="${channel.id}" data-type="${type.id}"
+                        class="i-checks setup-checkbox" value="1" name="setup[${channel.id}][${type.id}]">
+                  </td>
+            {{ '{{' }}/each{{ '}}' }}
+        </tr>
+    </script>
+
+    {% jshrink %}
+    <script>
+        $(document).ready(function () {
+            var wrapper = $('#wrapper');
+            var notificationsSetupTable = wrapper.find('#notifications-setup-table');
+
+            /**
+            * Return channel colection.
+            * @return defer
+            * */
+            function getChannels() {
+                var defer = $.Deferred();
+                defer.notify('Retrieve channels from API request...');
+
+                var request = $.client['notification-channels'].read();
+
+                request.done(function (channels) {
+                    defer.resolve(channels);
+                });
+
+                request.error(function (response) {
+                    defer.reject(response.statusText);
+                });
+
+                return defer;
+            }
+
+            /**
+            * Return notification types collection
+            * @return defer
+            * */
+            function getTypes() {
+                var defer = $.Deferred();
+                defer.notify('Retrieve types from API request...');
+
+                var request = $.client['notification-types'].read();
+
+                request.done(function (channels) {
+                    defer.resolve(channels);
+                });
+
+                request.error(function (response) {
+                    defer.reject(response.statusText);
+                });
+
+                return defer;
+            }
+
+            /**
+            * Return notification setup.
+            * @return defer
+            * */
+            function getSetupStatus() {
+                var defer = $.Deferred();
+                defer.notify('Retrieve setup status from API request...');
+
+                var request = $.client['notifications'].setup();
+
+                request.done(function (channels) {
+                    defer.resolve(channels);
+                });
+
+                request.error(function (response) {
+                    defer.reject(response.statusText);
+                });
+
+                return defer;
+            }
+
+            /**
+            * Draw setup table
+            * */
+            function drawSetupTable() {
+                $.blockUI();
+
+                $.when(getChannels()).then(function (response) {
+                    var channels = response.recordset;
+                    var thead = notificationsSetupTable.find('thead').find('tr');
+                    var tbody = notificationsSetupTable.find('tbody');
+
+                    $('#tableHeadTemplate').tmpl(channels).appendTo(thead);
+                    $.when(getTypes()).then(function (response) {
+                        var types = response.recordset;
+
+                        $.each(types, function (index, type) {
+                            $('#tableBodyTemplate').tmpl({ type: type, channels: channels }).appendTo(tbody);
+                        });
+
+                        $.when(getSetupStatus()).then(function (setup) {
+                            console.log(setup);
+
+                            $.each(setup.channel, function (channel_id, object) {
+                                $.each(object.type.collection, function (type_id, state) {
+                                    if (state > 0) {
+                                        var selector = '.setup-checkbox[data-channel='+ channel_id +'][data-type='+ type_id +']';
+                                        var element = wrapper.find(selector);
+
+                                        if (element.length > 0) {
+                                            element.prop('checked', true)
+                                        }
+                                    }
+                                });
+                            });
+
+                            initIChecks(notificationsSetupTable);
+                            $.unblockUI();
+                        });
+
+                    }, function (message) {
+                        error(message);
+                        $.unblockUI();
+                    });
+                }, function (message) {
+                    error(message);
+                    $.unblockUI();
+                });
+            }
+
+            /**
+            * Event for checkbox change.
+            * */
+            wrapper.on('ifChanged', '.setup-checkbox', function () {
+                var channel = $(this).data('channel');
+                var type = $(this).data('type');
+                var persist = !!$(this).is(':checked');
+                var request;
+
+                if (!persist) {
+                    request = $.client['notification-channels']['notification-types'].destroy(channel, type);
+                } else {
+                    request = $.client['notification-channels']['notification-types'].create(channel, type);
+                }
+
+                request.complete(function (response) {
+                    handleGracefullyTheResponse(response);
+                });
+            });
+
+            /**
+            * Load notification setup page.
+            * */
+            function loadNotificationSetupPage() {
+                drawSetupTable();
+            }
+
+            loadNotificationSetupPage();
+
+        });
+    </script>
+    {% endjshrink %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "base.html.twig" %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block title %}
+    {{ user }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">
+        <strong>{{ 'app.profile' | trans }}</strong>
+    </li>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+    {% include "FOSUserBundle:Profile:show_content.html.twig" %}
+{% endblock %}

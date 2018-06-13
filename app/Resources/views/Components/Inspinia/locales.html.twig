@@ -1,0 +1,15 @@
+<a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+    <img src="/img/flags/16/{{ locales[app.request.locale]['country'] }}.png">
+</a>
+<ul class="dropdown-menu dropdown-locales">
+    {% for locale in locales %}
+        {% set redirectTo = path(route, routeParams|merge({ _locale: locale.code })) %}
+        <li>
+            <a href="{{ path('change_language', { 'redirectTo': redirectTo, 'locale': locale.code }) }}"
+               class="btn btn-block {{ app.request.locale == locale.code ? 'btn-outline btn-success' : '' }}">
+                <img src="/img/flags/16/{{ locale.country }}.png"> {{ locale.name }}
+            </a>
+        </li>
+        <li class="divider"></li>
+    {% endfor %}
+</ul>

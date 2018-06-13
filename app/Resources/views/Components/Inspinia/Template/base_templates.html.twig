@@ -1,0 +1,27 @@
+<script id="loadingTemplate" type="text/x-jquery-tmpl">
+    <div class="sk-spinner sk-spinner-wave">
+        <div class="sk-rect1"></div>
+        <div class="sk-rect2"></div>
+        <div class="sk-rect3"></div>
+        <div class="sk-rect4"></div>
+        <div class="sk-rect5"></div>
+    </div>
+</script>
+<script id="notificationTemplate" type="text/x-jquery-tmpl">
+    <li class="${active_class}">
+        ${route=Routing.generate('app_notification_redirect'), ""}
+        <a href="${route}/${id}">
+            <div class="dropdown-messages-box">
+                <div class="pull-left">
+                    <img alt="image" class="img-circle" src="${from.picture}">
+                </div>
+                <div class="media-body">
+                    <small class="pull-right">${ago(created_at)}</small>
+                    <strong>${title}</strong> <br>
+                    <small class="text-muted">${description}</small>
+                </div>
+            </div>
+        </a>
+    </li>
+    <li class="divider"></li>
+</script>

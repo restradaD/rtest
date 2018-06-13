@@ -1,0 +1,38 @@
+{% trans_default_domain 'AppBundle' %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>{{ 'app.error' | trans }} | {{ app_name }}</title>
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('font-awesome/css/font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animate.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+
+</head>
+
+<body class="gray-bg">
+
+
+<div class="middle-box text-center animated fadeInDown">
+    <h1>{{ status_code }}</h1>
+    <h3 class="font-bold">{{ status_text }}</h3>
+    <br>
+    <div class="error-desc">
+        {{ 'app.error.message' | trans }}
+    </div>
+    <br>
+    <a href="{{ path('grand_central') }}" class="btn block full-width btn-primary">{{ 'app.take_me_home' | trans }}</a>
+</div>
+
+<script src="{{ asset('js/jquery-2.1.1.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
+
+</body>
+
+</html>

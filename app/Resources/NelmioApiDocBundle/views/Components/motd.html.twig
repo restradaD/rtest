@@ -1,0 +1,18 @@
+{% trans_default_domain 'AppBundle' %}
+
+<style>
+    .right{ float: right; }
+    .text-small{ font-size: 11px; }
+    #header {
+        background: #2F4050;
+        color: #fff;
+    }
+    #header h1 {
+        color: #fff;
+    }
+    #summary { display: none; }
+</style>
+
+<div class="motd">
+    <p>{{ 'Welcome,' | trans }} <strong>{{ app.user }}</strong></p>
+</div>

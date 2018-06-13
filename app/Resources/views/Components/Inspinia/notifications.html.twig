@@ -1,0 +1,16 @@
+{% trans_default_domain 'AppBundle' %}
+<a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+    <i class="fa fa-bell"></i>
+</a>
+<ul class="dropdown-menu dropdown-alerts">
+
+
+    <li>
+        <div class="text-center link-block">
+            <a href="{{ path('app_notification_list') }}">
+                <strong>{{ 'app.notifications.see_all' | trans }}</strong>
+                <i class="fa fa-angle-right"></i>
+            </a>
+        </div>
+    </li>
+</ul>

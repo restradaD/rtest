@@ -1,0 +1,156 @@
+{% extends 'base.html.twig' %}
+{% trans_default_domain 'AppBundle' %}
+
+{% block title %}
+    {{ 'app.notifications.list' | trans }}
+{% endblock %}
+
+{% block breadcrumb %}
+    <li class="active">
+        <strong>{{ 'app.notifications.list' | trans }}</strong>
+    </li>
+{% endblock %}
+
+{% block buttons %}
+    <a href="{{ path('app_notification_setup') }}" class="btn btn-primary">
+        {{ 'app.notifications_setup' | trans }}
+    </a>
+{% endblock %}
+
+{% block body %}
+    {{ parent() }}
+
+    <div class="col-lg-12">
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>{{ 'app.notifications.list' | trans }}</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="table-responsive">
+                    <table id="notifications-table" class="table table-hover">
+                        <tbody>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block javascript %}
+    <script id="singleNotificationPageTemplate" type="text/x-jquery-tmpl">
+        ${route=Routing.generate('app_notification_redirect'), ""}
+
+        <tr>
+            <td>
+                <i class="fa fa-circle text-${text_class}"></i>
+            </td>
+            <td class="issue-info">
+                <a href="${route}/${id}">
+                    ${title}
+
+                    <small>
+                        ${description}
+                    </small>
+                </a>
+            </td>
+            <td>
+                <a class="text-muted" href="${route}/${id}">
+                    ${from.full_name}
+                </a>
+            </td>
+            <td>
+                <a class="text-muted" href="${route}/${id}">
+                    ${formatDate(created_at)}
+                </a>
+            </td>
+            <td class="text-right">
+                <a href="${route}/${id}">
+                    <img width="48px" height="48px" class="img-circle" src="${from.picture}" alt="${from.full_name}" title="${from.full_name}">
+                </a>
+            </td>
+        </tr>
+    </script>
+
+    {% jshrink %}
+    <script>
+        $(document).ready(function () {
+            /**
+             * Return notifications collection
+             * @return defer
+             * */
+            function getNotifications(limit, offset) {
+                var defer = $.Deferred();
+                defer.notify('Connecting to API...');
+                var request = $.client['notifications'].read({ limit: limit, offset: offset });
+
+                request.done(function (notifications) {
+                    defer.resolve(notifications);
+                });
+
+                request.error(function (response) {
+                    defer.reject(response.statusText);
+                });
+
+                return defer;
+            }
+
+            /**
+             * Draws notifications UI
+             * @return defer
+             * */
+            function drawNotificationsPageUI() {
+                var defer = $.Deferred();
+                defer.notify('Drawing...');
+                var notificationsTable = $('#notifications-table').find('tbody');
+
+                $.when(getNotifications(10000, 0)).then(function (response) {
+                    var notifications = response.recordset;
+                    $('#singleNotificationPageTemplate').tmpl(notifications).prependTo(notificationsTable);
+
+                    if (notifications.length == 0) {
+                        var h2 = $('<h2/>').addClass('text-center').html('{{ 'app.notifications.nothing_found' | trans }}');
+                        var td = $('<td/>').append(h2);
+                        var noContent = $('<tr/>').append(td);
+                        notificationsTable.prepend(noContent);
+                    }
+
+                    defer.resolve(true);
+                }, function (error) {
+                    defer.reject(error);
+                });
+
+                return defer;
+            }
+
+            /**
+            * Builds notifications UI
+            * */
+            function buildNotificationsPageUI() {
+                var defer = $.Deferred();
+                defer.notify('Building notifications UI...');
+
+                $.when(drawNotificationsPageUI()).then(function (status) {
+                    info(status);
+                }, function (message) {
+                    error(message);
+                });
+
+                return defer;
+            }
+
+            /**
+            * Init Notifications Page
+            * */
+            function loadNotificationsPage() {
+                buildNotificationsPageUI();
+            }
+
+            loadNotificationsPage();
+        });
+    </script>
+    {% endjshrink %}
+{% endblock %}
